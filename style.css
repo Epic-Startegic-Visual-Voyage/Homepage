@@ -1,0 +1,1237 @@
+/* Alap stílusok és reset */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* Navigációs sáv konténer */
+.navbar {
+    /* FIX POZÍCIÓ: Ettől marad mindig látható */
+    position: fixed; 
+    top: 0;           /* Ragaszkodik a képernyő tetejéhez */
+    left: 0;          /* Ragaszkodik a képernyő bal széléhez */
+    width: 100%;      /* Teljes szélesség kitöltése */
+    
+    /* Vizuális beállítások */
+    z-index: 1000;    /* Nagyon magas z-index, hogy minden más elemet fedjen */
+    
+    /* A meglévő stílusaid: */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;               /* Fix magasság helyett minimum magasság */
+    height: auto;                   /* Engedi a fejlécnek, hogy nőjön, ha kell */
+    padding: 10px 3%;               /* Kicsit kevesebb padding a széleken, hogy több hely legyen */
+    flex-wrap: nowrap;              /* Megakadályozza a sorok törését asztali nézetben */
+    background-color: #E5D9F2; /* A jelenlegi háttérszín */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Enyhe árnyék a kiemelésért */
+}  
+/* Logó terület stílusa */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 40px; /* Logó magassága */
+    margin-right: 10px;
+}
+
+.logo span {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #000000;
+}
+#mainHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; /* Az első érték a felül/alul, a 40px a bal/jobb oldali margó */
+    box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje meg a fejléc szélességét */
+    width: 100%;
+}
+/* --- GÖRGETÉS JELZŐ CSÍK STÍLUSAI --- */
+
+#progress-bar-container {
+    position: fixed; /* Rögzítés a képernyő tetején */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 6px; /* A csík magassága */
+    background-color: transparent; /* A konténer háttérszíne (lehet világos szürke is) */
+    z-index: 1000; /* Biztosítja, hogy minden más felett legyen */
+}
+
+#progress-bar {
+    width: 0%; /* Alapból nulla széles */
+    height: 100%;
+    background-color: #ff5722; /* Narancssárga szín (az Ön landing page stílusához igazítva) */
+    transition: width 0.1s; /* Finomabb mozgásért */
+}
+
+/* Navigációs linkek stílusa (asztali nézet) */
+.nav-links ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333;
+    font-weight: 500;
+    padding: 8px 0;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ff5722; /* Narancssárga kiemelés */
+}
+
+/* CTA gomb stílusa (Árajánlatkérés) */
+.cta-button {
+    background-color: #ff5722; /* Narancssárga, mint a képen */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #e64a19;
+}
+
+/* Hamburger menü ikon - Alapból rejtve (asztali nézet) */
+.hamburger-menu {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #333;
+}
+.language-picker {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-right: 15px; /* Távolság a gomb előtt */
+    margin-left: 10px;  /* Távolság a menü után */
+    font-size: 0.85rem;
+    font-weight: 600;
+    flex-shrink: 0;     /* Megakadályozza az összenyomódást */
+}
+
+.lang-link {
+    text-decoration: none;
+    color: #333;        /* A logó szövegének színe */
+    transition: color 0.3s ease;
+}
+
+.lang-link.active {
+    color: #6a0dad;    /* Aktív nyelv színe (lila, mint a fejléc díszítése) */
+    pointer-events: none;
+}
+
+.lang-link:hover {
+    color: #ff5722;    /* Narancs hover effekt, mint a gombnál */
+}
+
+.lang-separator {
+    color: #ccc;
+    font-weight: normal;
+}
+
+/* Tablet/Mobil finomhangolás */
+@media (max-width: 1024px) {
+    .language-picker {
+        margin-right: 10px;
+        font-size: 0.75rem;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/* MOBIL NÉZET: Átváltás hamburger menüre (pl. 768px alatt) */
+/* -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    /* Megmutatjuk a hamburger ikont */
+    .hamburger-menu {
+        display: block;
+    }
+
+    /* Elrejtjük az asztali navigációs linkeket és a CTA gombot, de az utóbbit csak a mobil menüben akarjuk majd megjeleníteni */
+    .nav-links, .cta-button {
+        display: none;
+    }
+
+    /* A menü, amikor a hamburger ikonra kattintanak */
+    .nav-links {
+        /* Fix pozíció, hogy felül legyen minden felett */
+        position: absolute;
+        top: 60px; /* A menü alá */
+        left: 0;
+        width: 100%;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 100;
+        /* Alapból elrejtjük */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    /* Amikor aktív, becsúsztatjuk */
+    .nav-links.active {
+        display: block; /* Visszaállítjuk a display: none; helyett */
+        transform: translateX(0);
+    }
+
+    .nav-links ul {
+        flex-direction: column; /* Linkek egymás alatt */
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    .nav-links li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+/* --- HERO SZEKCIÓ STÍLUSAI --- */
+
+.hero-section {
+    display: flex;
+    max-width: 1200px;
+    margin: 50px auto; /* Középre igazítás */
+    margin-top: 90px;    
+    padding: 0 5%;
+    gap: 40px;
+    align-items: center;
+}
+
+/* Bal oldali tartalom (Main Content) */
+.hero-content {
+    flex: 2; /* Több helyet kap (kb. 60%) */
+}
+
+/* Fő cím stílusa */
+.main-title {
+    font-size: 3.5em; /* Nagy méret */
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+/* A szám kiemelése */
+.highlight-number {
+    color: #9c27b0; /* Lila szín a képen látható módon */
+}
+
+/* Alcím/leírás */
+.subtitle {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 30px;
+}
+
+/* CTA Gomb (Nagy) */
+.cta-button-large {
+    display: inline-block;
+    background-color: #ff5722; /* Narancssárga */
+    color: white;
+    padding: 18px 30px;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+    margin-bottom: 15px;
+}
+
+.cta-button-large:hover {
+    background-color: #e64a19;
+}
+
+/* Apró információk a gomb alatt */
+.small-info p {
+    font-size: 0.85em;
+    color: #777;
+    margin: 5px 0;
+}
+
+
+/* Jobb oldali Hitelességi Szekció (Social Proof/Testimonial) */
+.hero-testimonial {
+    flex: 1; /* Kevesebb helyet kap (kb. 40%) */
+}
+
+
+.testimonial-box {
+    /* Enyhe lebegő hatás (box-shadow) */
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15); 
+    border-radius: 12px;
+    padding: 30px;
+    background-color: #fff; /* Fehér háttér a kiemeléshez */
+    
+    /* Lebegő hatás: Enyhe megemelés hoverre (opcionális) */
+    transition: transform 0.4s, box-shadow 0.4s;
+    
+    /* A beúszó animáció előkészítése: Alapértelmezetten balra eltolva és rejtett */
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.testimonial-box:hover {
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.25); /* Árnyék erősítése hoverre */
+    transform: translateY(-5px) translateX(-50px); /* Kicsit feljebb is ugrik, ha "rálebegünk" */
+}
+/* --- ANIMÁCIÓ ÁLLAPOTA --- */
+
+.testimonial-box.is-visible {
+    /* A beúszó effektus aktiválása: */
+    opacity: 1; /* Teljesen látható */
+    transform: translateX(0); /* Visszatoljuk az eredeti (0) pozícióba */
+    
+    /* Animáció sebessége és időzítése */
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+.quote {
+    font-style: italic;
+    font-size: 1.1em;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.quote.purple-text {
+    color: #9c27b0; /* Lila idézet */
+    font-weight: bold;
+}
+
+.brand-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 15px 0;
+}
+
+/* Kliens információk */
+.client-info {
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.client-avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 15px;
+    border: 3px solid #ff5722; /* Narancssárga keret az avatár körül */
+}
+
+.client-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.client-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.client-role {
+    font-size: 0.9em;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.small-logo {
+    max-width: 80px; /* Logó méret a név mellett */
+    margin: 0;
+}
+
+/* --- RESZPONZIVITÁS (Tablet és Mobil) --- */
+
+@media (max-width: 992px) {
+    /* Átváltás oszlopos elrendezésre kisebb képernyőn */
+    .hero-section {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .hero-content, .hero-testimonial {
+        flex: none; /* Leveszi a flex beállításokat */
+        width: 100%;
+    }
+
+    .main-title {
+        font-size: 2.5em; /* Cím kicsit kisebb mobilon */
+    }
+
+    .testimonial-box {
+        padding: 30px;
+    }
+}
+
+/* --- REFERENCIÁK SZEKCIÓ STÍLUSAI --- */
+
+.references-section {
+    padding: 80px 5%;
+    background-color: #ffffff; /* Fehér háttér */
+    text-align: center;
+}
+
+.references-title { /* Ellenőrizd, hogy ez-e az osztályneve a szekciónak! */
+    text-align: center;      /* A szöveget középre teszi */
+    width: 100%;             /* Biztosítja, hogy a teljes szélességet kitöltse a keret */
+    margin-left: auto;       /* Segít a vízszintes pozicionálásban */
+    margin-right: auto;
+    margin-bottom: 40px;     /* Távolság az első lépéstől */
+    font-size: 2em;
+    font-weight: 800;
+}
+.logo-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    /* FIX 5 oszlop beállítása */
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 30px 20px; /* Sor és oszlop távolság */
+    align-items: center; 
+}
+
+.logo-item {
+    /* Magasság fixálása a vizuális egyenletességért (opcionális, de ajánlott) */
+    height: 80px; 
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    opacity: 0.7; 
+    transition: opacity 0.3s;
+    padding: 10px;
+}
+
+.logo-item:hover {
+    opacity: 1; 
+}
+
+.logo-item img {
+    width: 100%;
+    max-height: 100%; /* Gondoskodik róla, hogy ne nyúljon túl a 80px magasságon */
+    height: auto;
+    filter: none; 
+    display: block;
+}
+
+/* --- RESZPONZIVITÁS (Mobil/Táblagép nézet) --- */
+@media (max-width: 1024px) {
+    /* Táblagépen 5 oszlop */
+    .logo-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Mobilon 3 oszlop */
+    .logo-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 10px;
+    }
+}
+
+/* --- FOLYAMAT SZEKCIÓ STÍLUSAI (BOX FLOW) --- */
+.section-title { /* Ellenőrizd, hogy ez-e az osztályneve a szekciónak! */
+    text-align: center;      /* A szöveget középre teszi */
+    width: 100%;             /* Biztosítja, hogy a teljes szélességet kitöltse a keret */
+    margin-left: auto;       /* Segít a vízszintes pozicionálásban */
+    margin-right: auto;
+    margin-bottom: 40px;     /* Távolság az első lépéstől */
+    font-size: 2em;
+    font-weight: 800;
+}
+.isometric-icon {
+    width: 120px; /* Az ilyen illusztrációknak több hely kell */
+    height: auto;
+    margin-top: -60px; /* Kilógatja a kártya tetejéből, mint a mintán */
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1)); /* Puha árnyék az ikon alá */
+    transition: transform 0.3s ease;
+}
+
+.step-icon-card:hover .isometric-icon {
+    transform: translateY(-10px); /* Lebegő hatás hoverre */
+}
+.process-flow {
+    padding: 80px 5%;
+    background-color: #f4f7fa; /* Világos háttér */
+    text-align: center;
+    color: #333;
+}
+
+.process-flow .section-title {
+    font-size: 2.5em;
+    font-weight: 800;
+    color: #4b0082; /* Lila cím */
+    margin-bottom: 50px; 
+}
+
+.flow-container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Egyedi lépés konténer */
+.process-step-flow {
+    display: flex;
+    align-items: flex-start; /* Elemek a tetejüknél kezdődnek */
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+/* Kiemelt ikon kártya (Bal oldalon) */
+.step-icon-card {
+    min-width: 150px; /* Fix szélesség az ikonnak */
+    max-width: 150px;
+    padding: 20px 10px;
+    border-radius: 8px;
+    margin-right: 30px;
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.step-icon-card i {
+    font-size: 2.5em;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* Egyedi ikon színek */
+.step-1 .step-icon-card { background-color: #8e24aa; } 
+.step-2 .step-icon-card { background-color: #e53935; } 
+.step-3 .step-icon-card { background-color: #00796b; } 
+.step-4 .step-icon-card { background-color: #ffb300; } 
+
+
+/* Tartalom doboz (Jobb oldalon) */
+.step-content-card {
+    flex-grow: 1; /* Kitölti a maradék helyet */
+    background-color: #ffffff;
+    padding: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.step-content-card .step-title {
+    font-size: 1.4em;
+    color: #4b0082;
+    margin-top: 0;
+}
+
+.step-content-card p {
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --- RESZPONZIVITÁS (Mobil nézet) --- */
+@media (max-width: 768px) {
+    .process-step-flow {
+        flex-direction: column; /* Ikon és tartalom egymás alá kerül */
+        margin-bottom: 30px;
+    }
+
+    .step-icon-card {
+        min-width: 100%; /* Ikon kártya teljes szélességű lesz felül */
+        max-width: 100%;
+        margin-right: 0;
+        margin-bottom: 15px;
+        text-align: left; /* Jobb olvashatóság */
+        display: flex;
+        align-items: center;
+    }
+    
+    .step-icon-card i {
+        margin: 0 15px 0 0;
+    }
+}
+
+/* --- CSAPATUNK SZEKCIÓ STÍLUSAI --- */
+
+.team-section {
+    padding: 80px 5%;
+    background-color: #f0f4ff; /* Világos kék/lila háttér a képen látható módon */
+    text-align: center;
+}
+.team-section .section-title { 
+    text-align: center;      /* A szöveget középre teszi */
+    width: 100%;             /* Biztosítja, hogy a teljes szélességet kitöltse a keret */
+    margin-left: auto;       /* Segít a vízszintes pozicionálásban */
+    margin-right: auto;
+    margin-bottom: 40px;     /* Távolság az első lépéstől */
+    font-size: 2em;
+    font-weight: 800;
+}
+
+.team-members-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Távolság a tagok között */
+}
+
+/* Egyedi csapattag kártya */
+.member-card {
+    display: flex;
+    align-items: center;
+    text-align: left;
+    gap: 40px;
+}
+
+/* Fordított elrendezés (kép jobbra, szöveg balra) */
+.member-card.reverse-layout {
+    flex-direction: row-reverse;
+}
+
+/* Kép konténer és fotó stílusa */
+.member-photo-wrapper {
+    flex-shrink: 0; /* Megakadályozza a kép zsugorodását */
+    width: 250px;
+    height: 250px;
+}
+
+.member-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%; /* Kerekített profilkép */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.member-details {
+    flex-grow: 1;
+}
+
+.member-name {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 5px;
+}
+
+.member-role {
+    font-size: 1.1em;
+    color: #6a1b9a; /* Lila szerep */
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.member-description {
+    line-height: 1.6;
+    color: #555;
+}
+
+/* Közösségi média ikon */
+.social-icon {
+    display: inline-block;
+    color: #9c27b0;
+    font-size: 1.5em;
+    margin-top: 10px;
+    transition: color 0.3s;
+}
+
+.social-icon:hover {
+    color: #6a1b9a;
+}
+
+
+/* --- RESZPONZIVITÁS (Mobil nézet) --- */
+
+@media (max-width: 768px) {
+    .member-card, 
+    .member-card.reverse-layout {
+        flex-direction: column; /* Mobilon minden elem oszlopként jelenik meg */
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .member-photo-wrapper {
+        width: 150px; /* Kisebb kép mobilon */
+        height: 150px;
+    }
+
+    .member-name {
+        margin-top: 15px;
+    }
+
+    .member-role {
+        margin-bottom: 10px;
+    }
+}
+
+/* --- SZOLGÁLTATÁSOK SZEKCIÓ STÍLUSAI --- */
+
+.services-section {
+    padding: 80px 5%;
+    text-align: center;
+    background-color: #ffffff; /* Fehér háttér, hogy elkülönüljön az előző szekciótól */
+}
+/* Célzott halványítás a .task-list elemekre (pl. Keresőoptimalizálás) */
+.task-list li { 
+    /* Halványabb szürke szín, pl. #555. Használjuk az !important-ot a felülíráshoz! */
+    color: #555 !important; 
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+/* Célzott halványítás a .report-list elemekre (pl. Folyamatos projektfelügyelet) */
+.report-list li {
+    /* Halványabb szürke szín kényszerítése */
+    color: #555 !important; 
+    line-height: 1.6;
+    margin-bottom: 5px;
+}
+
+.services-title { 
+    text-align: center;      /* A szöveget középre teszi */
+    width: 100%;             /* Biztosítja, hogy a teljes szélességet kitöltse a keret */
+    margin-left: auto;       /* Segít a vízszintes pozicionálásban */
+    margin-right: auto;
+    margin-bottom: 40px;     /* Távolság az első lépéstől */
+    font-size: 2em;
+    font-weight: 800;
+}
+/* Kártya konténer (Grid vagy Flex) */
+.service-cards-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 egyforma oszlop */
+    gap: 30px;
+}
+/* ... (A reszponzivitás beállítások is maradnak, amelyek mobil nézetben 1, tableten 2 oszlopra váltanak) */
+/* Egyedi szolgáltatás kártya stílusa */
+.service-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); /* Árnyék, mint a mintán */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.service-card:hover {
+    transform: translateY(-5px); /* Enyhe kiemelés a hover hatásra */
+}
+
+/* Ikon/Fejléc */
+.icon-header {
+    font-size: 3em;
+    color: #9c27b0; /* Lila szín az ikonnak */
+    margin-bottom: 15px;
+}
+
+.card-title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.service-summary {
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 25px;
+}
+
+/* Mi ez? definíció box */
+.definition-box {
+    background-color: #f7f7f7;
+    padding: 15px;
+    border-radius: 5px;
+    margin-top: auto; /* A gomb fölé tolja a boxot */
+    margin-bottom: 25px;
+    width: 100%;
+}
+
+.definition-box h4 {
+    color: #9c27b0; /* Lila "Mi ez?" cím */
+    font-size: 1em;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.definition-box p {
+    font-size: 0.9em;
+    color: #777;
+    margin: 0;
+}
+
+/* CTA Gomb (Kicsi, narancssárga) */
+.cta-button-small {
+    display: inline-block;
+    background-color: #ff5722;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+    width: 100%;
+    margin-top: 15px; /* Hogy elválassza a definíciótól */
+}
+
+.cta-button-small:hover {
+    background-color: #e64a19;
+}
+
+
+/* --- RESZPONZIVITÁS (Tablet és Mobil) --- */
+
+@media (max-width: 992px) {
+    /* Tablet nézet: 2 oszlop */
+    .service-cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    /* Mobil nézet: 1 oszlop */
+    .service-cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- ESETTANULMÁNYOK SZEKCIÓ STÍLUSAI --- */
+
+.results-section {
+    padding: 80px 5%;
+    background-color: #ffffff; 
+    text-align: center;
+}
+
+.results-main-title { 
+    text-align: center;      /* A szöveget középre teszi */
+    width: 100%;             /* Biztosítja, hogy a teljes szélességet kitöltse a keret */
+    margin-left: auto;       /* Segít a vízszintes pozicionálásban */
+    margin-right: auto;
+    margin-bottom: 40px;     
+    font-size: 2em;
+    font-weight: 800;
+}
+.results-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.case-study {
+    display: grid;
+    /* Két oszlop: 1.5 rész a képnek/kiemelésnek, 1 rész a szövegnek */
+    grid-template-columns: 1.5fr 1fr; 
+    gap: 40px;
+    align-items: flex-start; /* Elemek felülre igazítása */
+    margin-bottom: 60px;
+    padding: 40px 0;
+    text-align: left;
+}
+
+/* Képek és kiemelések oszlopa */
+.case-image-col {
+    padding: 0 20px;
+}
+
+.case-highlight {
+    font-size: 1.8em;
+    font-weight: 800;
+    color: #333;
+    line-height: 1.3;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.case-highlight span {
+    color: #9c27b0; /* Lila szín kiemelés */
+}
+
+.case-graph {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Szöveges oszlop */
+.case-text-col {
+    padding: 0 20px;
+}
+
+.case-text-col p {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    font-size: 1.05em;
+    color: #555;
+}
+
+.case-text-col strong {
+    color: #333;
+}
+
+.result strong {
+    color: #ff5722; /* Narancssárga kiemelés az eredményre */
+}
+
+.study-separator {
+    border: none;
+    border-top: 1px solid #eee;
+    margin: 40px auto;
+    width: 80%;
+}
+
+/* A második esettanulmány felcserélése (reverse-layout) */
+.reverse-layout {
+    grid-template-areas: "text image";
+    grid-template-columns: 1fr 1.5fr; /* Felcseréljük az arányokat */
+}
+.reverse-layout .case-text-col {
+    grid-area: text;
+}
+.reverse-layout .case-image-col {
+    grid-area: image;
+}
+
+/* --- RESZPONZIVITÁS --- */
+@media (max-width: 900px) {
+    .case-study {
+        /* Mobilon és kisebb képernyőn minden egymás alá kerül */
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    /* A felcserélés megszűnik mobil nézetben */
+    .reverse-layout {
+        grid-template-columns: 1fr;
+        grid-template-areas: none;
+    }
+
+    .case-image-col, .case-text-col {
+        padding: 0;
+    }
+    
+    /* A kép/kiemelés oszlop kerül előre mobil nézetben */
+    .case-study:nth-child(even) {
+        flex-direction: column;
+    }
+}
+/* Megemeltük a méretet 1024px-re, hogy a tableteken is jó legyen */
+@media (max-width: 1024px) {
+    .case-study, .reverse-layout {
+        display: flex !important; /* Grid helyett Flexbox-ra váltunk, ez stabilabb egymás alá rakásnál */
+        flex-direction: column !important; /* Mindenképp egymás alá kerülnek */
+        gap: 20px;
+        width: 100% !important;
+    }
+
+    /* Kényszerítjük az oszlopokat, hogy töltsék ki a szélességet */
+    .case-image-col, .case-text-col {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        grid-area: auto !important; /* Ez "elfelejteti" velük a korábbi grid pozíciót */
+    }
+
+    /* Ha azt akarod, hogy a grafikon MINDIG felül legyen (a fordított elrendezésnél is) */
+    .case-image-col {
+        order: 1 !important;
+    }
+    
+    .case-text-col {
+        order: 2 !important;
+    }
+}
+/* A grafikonok alapbeállítása */
+.case-graph {
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Sima átmenet */
+    cursor: pointer; /* Mutatja, hogy interaktív az elem */
+    border-radius: 8px; /* Opcionális: lekerekített sarkok a grafikonnak */
+}
+
+/* Effekt, amikor ráhúzod az egeret */
+.case-graph:hover {
+    /* NAGYÍTÁS (Zoom-in): ha azt akarod, hogy közelebb jöjjön */
+    transform: scale(1.1); 
+    
+    /* KICSINYÍTÉS (Zoom-out): ha szó szerint távolodni kell */
+    /* transform: scale(0.9); */
+    
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2); /* Egy kis árnyék, hogy kiemelkedjen */
+    z-index: 10; /* Biztosítja, hogy ne takarja el semmi a nagyításnál */
+}
+
+/* --- CTA SZEKCIÓ STÍLUSAI --- */
+
+.cta-section {
+    padding: 80px 5%;
+    background-color: #4b0082; /* Sötétlila háttér a kiemelésért */
+    text-align: center;
+    color: #fff;
+}
+
+.cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cta-title {
+    font-size: 2.5em;
+    font-weight: 800;
+    margin-bottom: 15px;
+}
+
+.cta-subtitle {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-bottom: 40px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap; /* Mobilon egymás alá törés */
+}
+
+/* Fő CTA gomb (Narancs) */
+.main-cta-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: #ff5722 !important; /* Narancssárga kiemelés */
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.2s;
+    font-size: 1.1em;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.main-cta-btn:hover {
+    background-color: #e64a19 !important;
+    transform: translateY(-2px);
+}
+
+/* Másodlagos gomb (Fehér/Átlátszó - a GYIK linkhez) */
+.secondary-cta-btn {
+    display: inline-block;
+    padding: 15px 35px;
+    background-color: transparent;
+    border: 2px solid #fff; /* Fehér keret */
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1.1em;
+}
+
+.secondary-cta-btn:hover {
+    background-color: #ffffff33; /* Halvány fehér háttér */
+}
+
+
+/* --- RESZPONZIVITÁS --- */
+@media (max-width: 600px) {
+    .cta-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+    .main-cta-btn, .secondary-cta-btn {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+/* --- FOOTER STÍLUSAI --- */
+
+.main-footer {
+    background-color: #333; /* Sötétszürke háttér a letisztult hatásért */
+    color: #f4f7fa; /* Világos szöveg */
+    padding: 50px 5%;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto 30px auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    border-bottom: 1px solid #444; /* Vékony elválasztó vonal */
+    padding-bottom: 30px;
+}
+
+/* Oszlopok stílusa */
+.footer-column {
+    flex: 1;
+    min-width: 200px; /* Biztosítja, hogy ne zsugorodjon túl kicsire */
+}
+
+/* Logó és Cím */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo img {
+    height: 40px;
+    filter: invert(100%); /* Fehér logó, ha fekete az eredeti */
+    margin-right: 10px;
+}
+
+.footer-logo span {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/* Elérhetőségek */
+.contact-item {
+    margin: 8px 0;
+    font-size: 0.95em;
+    display: flex;
+    align-items: center;
+}
+
+.contact-item i {
+    color: #ff5722; /* Narancssárga ikonok */
+    margin-right: 10px;
+    width: 15px; /* Fix szélesség */
+}
+
+.contact-item a {
+    color: #f4f7fa;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.contact-item a:hover {
+    color: #ff5722;
+}
+
+/* Navigációs linkek stílusa */
+.footer-links h3, .footer-social h3 {
+    font-size: 1.1em;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 8px;
+}
+
+.footer-links a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #ff5722;
+}
+
+/* Social Média ikonok */
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link {
+    font-size: 1.5em;
+    color: #ccc;
+    transition: color 0.3s;
+}
+
+.social-link:hover {
+    color: #9c27b0; /* Lila hover szín */
+}
+
+/* Alsó szekció (Jogi szövegek) */
+.footer-bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+    font-size: 0.8em;
+    color: #777;
+    padding-top: 15px;
+}
+
+.footer-bottom p {
+    margin: 5px 0;
+}
+
+.footer-bottom a {
+    color: #777;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom a:hover {
+    color: #ff5722;
+}
+
+/* --- RESZPONZIVITÁS (Mobil nézet) --- */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column; /* Oszlopba rendezés */
+        text-align: center;
+    }
+    
+    .footer-column {
+        margin-bottom: 30px;
+    }
+
+    .footer-logo {
+        justify-content: center; /* Logó középre */
+    }
+
+    .footer-links ul {
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center; /* Ikonok középre */
+    }
+
+    .contact-item {
+        justify-content: center; /* Kontakt elemek középre */
+    }
+}

@@ -1,0 +1,817 @@
+/* --- VÁLTOZÓK --- */
+:root {
+    --bg-purple: #473472;      /* Sötétlila */
+    --accent-blue: #87BAC3;    /* Világoskék */
+    --light-mint: #D6F4ED;     /* Világos menta háttér */
+    --text-black: #000000;
+    --text-white: #ffffff;
+    --navbar-height: 90px;
+}
+
+/* --- ALAPOK ÉS TIPOGRÁFIA --- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding-top: var(--navbar-height);
+    background-color: var(--light-mint);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200; /* Extra Light alapértelmezett */
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Címek: Libre Baskerville */
+h1, h2, h3, h4, .logo, .anchor-title {
+    font-family: 'Libre Baskerville', serif;
+    font-weight: 700;
+    line-height: 1.3;
+}
+
+/* Szövegek: Poppins Extra Light */
+p, li, span, a {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 200;
+    letter-spacing: 0.5px;
+}
+
+strong {
+    font-weight: 500; /* Kiemelések legyenek láthatóak */
+}
+
+/* A nagy főcím javítása a lyukak ellen */
+h2, h3, .main-title {
+    text-align: left !important; /* Balra igazítás */
+    hyphens: auto;              /* Opcionális: Szótagolás bekapcsolása a sűrűbb sorokért */
+    word-spacing: normal;       /* Visszaállítja a természetes szóközt */
+}
+
+/* A bekezdések (szövegtörzs) javítása */
+p, .content-text {
+    text-align: left !important; /* Sorkizárás helyett balra igazítás */
+    line-height: 1.6;           /* Kellemesebb sorköz az olvashatósághoz */
+}
+/* --- NAVBAR ÉS PROGRESS BAR --- */
+.main-navbar {
+    background-color: var(--bg-purple);
+    width: 100%;
+    height: var(--navbar-height);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    padding: 0 40px;
+}
+
+.logo {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--text-white);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.nav-links a.active {
+    border-bottom: 2px solid var(--accent-blue);
+    padding-bottom: 5px;
+}
+
+.cta-button-nav {
+    background-color: var(--accent-blue);
+    color: var(--bg-purple);
+    padding: 12px 30px;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.1);
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--accent-blue);
+    width: 0%;
+}
+/* --- MOBIL NAVBAR (992px alatt) --- */
+@media (max-width: 992px) {
+    .menu-toggle {
+        display: block;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .menu-toggle .bar {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+        display: block;
+        transition: 0.3s;
+    }
+
+    .nav-links {
+        display: none; /* Alapból elrejtve */
+        flex-direction: column;
+        position: fixed;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: #3D3369;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex; /* Ha rákattintasz a hamburgerre, megjelenik */
+    }
+}
+/* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
+.hero-full-width {
+    background-color: var(--bg-purple);
+    width: 100%;
+    padding: 50px 0;
+    border-bottom: 1px solid rgba(135, 186, 195, 0.2);
+}
+
+.hero-full-width .container {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px;
+    text-align: center;
+}
+
+.hero-full-width h1 {
+    font-weight: 400;
+    font-size: 2.6rem;
+    color: var(--accent-blue);
+    margin: 0;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+/* --- FŐ ELRENDEZÉS (KÉT OSZLOP) --- */
+.light-blue-section {
+    background-color: var(--light-mint);
+    padding: 60px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.main-layout {
+    display: flex;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 40px; /* Itt van a rés a bal szélen */
+    gap: 60px; /* Távolság a szöveg és az oldalsó menü között */
+}
+
+/* Bal oldali tartalom */
+.content-area {
+    flex: 3; /* Szélesebb rész */
+}
+
+/* Jobb oldali menü */
+.sidebar-area {
+    flex: 1; /* Keskenyebb rész */
+    min-width: 250px;
+}
+
+/* --- TARTALOM FORMÁZÁSA --- */
+.content-area h2 {
+    font-size: 2.8rem;
+    color: var(--bg-purple);
+    margin-bottom: 30px;
+}
+
+.content-area h3 {
+    font-size: 1.8rem;
+    color: var(--bg-purple);
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.content-area p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: var(--text-black);
+    margin-bottom: 25px;
+}
+
+/* Siker kulcsa doboz */
+.summary-box {
+    background-color: rgba(71, 52, 114, 0.05);
+    border-left: 5px solid var(--bg-purple);
+    padding: 30px;
+    margin-top: 30px;
+    border-radius: 0 15px 15px 0;
+}
+
+/* --- GLOBÁLIS FIX OLDALSÁV KONSTRUKCIÓ --- */
+.global-sidebar {
+    position: fixed;
+    right: 80px;         /* Beljebb húzva, hogy ne tapadjon a szélére */
+    top: 300px;        /* EZZEL MOZGATOD LEFELÉ */
+    width: 330px;        /* Szélesebb doboz a kényelmes olvashatóságért */
+    z-index: 1000;
+}
+
+.anchor-menu {
+    background-color: var(--bg-purple);
+    border: 1px solid rgba(135, 186, 195, 0.3);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    max-height: 55vh;    /* Rövidebb magasság, hogy ne lógjon le */
+    overflow-y: auto;    /* Belső görgetés engedélyezése */
+    box-sizing: border-box;
+}
+
+/* --- TARTALOMJEGYZÉK CÍME --- */
+.anchor-title {
+    color: var(--accent-blue) !important;
+    font-family: 'Libre Baskerville', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(135, 186, 195, 0.2);
+}
+
+/* --- LISTA ÉS LINKEK TISZTÍTÁSA --- */
+.anchor-list {
+    list-style: none !important; /* Pöttyök kényszerített eltüntetése */
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.anchor-list li {
+    list-style-type: none !important;
+    margin-bottom: 10px;
+}
+
+.anchor-list a {
+    text-decoration: none !important; /* Aláhúzás eltüntetése */
+    display: block;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- HIERARCHIA (Színek) --- */
+
+/* Főpontok: Hófehér és hangsúlyos */
+.anchor-list li.main-item a {
+    color: #ffffff !important;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-top: 15px;
+}
+
+/* Alpontok: Szürke és beljebb húzva */
+.anchor-list li.sub-item a {
+    color: #e9e7e7 !important;
+    padding-left: 15px;
+    font-size: 0.85rem;
+}
+
+/* Interakció: Kékre vált és beúszik */
+.anchor-list li.main-item a:hover,
+.anchor-list li.sub-sub-item a:hover,
+.anchor-list li.sub-item a:hover {
+    color: #87BAC3 !important; /* Kékre vált a szöveg */
+    padding-left: 25px !important;       /* Beljebb ugrik 10-15 pixelt */
+    transform: scale(1.02);              /* Picit megnő a szöveg */
+    opacity: 1;                          /* Biztosítjuk a teljes láthatóságot */
+}
+
+/* --- EGYEDI GÖRGETŐSÁV (SCROLLBAR) --- */
+.anchor-menu::-webkit-scrollbar {
+    width: 6px;
+}
+
+.anchor-menu::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.anchor-menu::-webkit-scrollbar-thumb {
+    background: var(--accent-blue);
+    border-radius: 10px;
+}
+
+/* Firefoxhoz */
+.anchor-menu {
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent-blue) rgba(255, 255, 255, 0.1);
+}
+
+/* Aktív link színe és stílusa */
+.anchor-list .main-item .toc-link.active,
+.anchor-list .sub-sub-item .toc-link.active,
+.anchor-list .sub-item .toc-link.active {
+    color: #87BAC3 !important; /* A kért világoskék szín */
+    font-weight: bold !important;
+    opacity: 1 !important;
+    transition: all 0.3s ease;
+}
+/* Opcionális: Ha szeretnéd, hogy a főcímek (main-item) kicsit nagyobbak maradjanak */
+.anchor-list .main-item .toc-link.active {
+    font-size: 1.1rem;
+}
+/* Opcionális: a szöveg többi része maradjon picit halványabb, hogy a kék jobban kijöjjön */
+.anchor-list .toc-link:not(.active) {
+    opacity: 0.6;
+    color: #ffffff;
+}
+
+/* A harmadik szint stílusa */
+.sub-sub-item {
+    padding-left: 40px !important; /* Nagyobb behúzás, mint a sub-itemnél */
+    margin-bottom: 5px !important;
+}
+
+.sub-sub-item .toc-link {
+    font-size: 0.8rem !important; /* Még kisebb betűméret a tömörség miatt */
+    opacity: 0.8; /* Kicsit halványabb, hogy látszódjon a hierarchia */
+    font-style: italic; /* Opcionális: dőlt betű az al-alpontoknak */
+}
+
+
+
+/* --- TARTALOM IGAZÍTÁSA --- */
+.container-with-margin {
+    max-width: 1400px;
+    margin: 0 auto;
+    /* Szöveg eltolása: 330px (menü) + 80px (jobb szél) + 50px (köz) */
+    padding: 0 460px 0 60px; 
+    box-sizing: border-box;
+}
+
+.content-area {
+    max-width: 900px;
+    text-align: justify;      /* Sorkizárt igazítás */
+    hyphens: auto;            /* Opcionális: automatikus elválasztás, hogy ne legyenek nagy hézagok */
+    line-height: 1.6;         /* Kicsit nagyobb sorköz az olvashatóságért */
+    margin-bottom: 20px;
+}
+
+/* A listaelemek igazítása (opcionális, ha azokat is így szeretnéd) */
+.content-area li {
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+/* Mobil elrejtés */
+@media (max-width: 1200px) {
+    .global-sidebar { display: none; }
+    .container-with-margin { padding: 0 40px; }
+}
+
+/* --- VONALAS LISTA STÍLUSA --- */
+.dash-list {
+    list-style-type: none !important; /* Pöttyök kikapcsolása */
+    padding-left: 20px !important;
+    margin-top: 0 !important; /* Ez húzza fel a listát a címhez */
+    margin-bottom: 10px;
+}
+.dash-list-title {
+    margin-bottom: 0 !important;
+    padding-bottom: 2px !important; /* Minimális hely a biztonság kedvéért */
+}
+.dash-list li {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 5px; /* TÉRKÖZ CSÖKKENTÉSE */
+    font-size: 1.1rem; 
+    line-height: 1.4; /* Kisebb sormagasság a sűrűbb hatásért */
+    text-align: left !important;
+}
+
+/* A vonal (gondolatjel) hozzáadása a lista elemek elé */
+.dash-list li::before {
+    content: "—"; /* Hosszú gondolatjel */
+    position: absolute;
+    left: 0;
+}
+
+
+/* --- 3. SZEKCIÓ: SÖTÉTLILA HÁTTÉR --- */
+.purple-section {
+    background-color: var(--bg-purple); /* Sötétlila háttér */
+    padding: 100px 0;
+    color: var(--text-white);         /* Alapértelmezett fehér szöveg */
+}
+
+/* Címek színe ebben a szekcióban */
+.purple-section h2, 
+.purple-section h3 {
+    color: var(--accent-blue);        /* Világoskék címek */
+}
+
+.purple-section p, 
+.purple-section li {
+    color: var(--text-white);         /* Fehér betűtípus */
+    opacity: 0.9;                     /* Kicsit lágyabb fehér az olvashatóságért */
+}
+
+/* Tipp doboz stílusa a lila háttéren */
+.tip-box {
+    background-color: rgba(135, 186, 195, 0.1); /* Halvány kék áttetsző háttér */
+    border-left: 4px solid var(--accent-blue);
+    padding: 25px;
+    margin: 30px 0;
+    border-radius: 0 10px 10px 0;
+}
+
+.tip-box strong {
+    color: var(--accent-blue);
+    display: block;
+    margin-bottom: 10px;
+    font-family: 'Libre Baskerville', serif;
+}
+
+/* Oldalsáv igazítása a sötét háttérhez */
+.purple-section .sticky-sidebar {
+    background-color: rgba(255, 255, 255, 0.05); /* Sötétebb, elegánsabb doboz */
+    border: 1px solid rgba(135, 186, 195, 0.3);
+}
+
+.purple-section .anchor-list a {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.purple-section .anchor-list a:hover, 
+.purple-section .anchor-list a.active {
+    color: var(--accent-blue);
+}
+
+
+/* --- FEHÉR SZEKCIÓ STÍLUSA --- */
+.white-section {
+    background-color: #ffffff;
+    padding: 100px 0;
+    width: 100%;
+    color: #000000; /* Fekete szöveg */
+}
+
+/* Kék címek a fehér szekción belül */
+.white-section h1, 
+.white-section h2, 
+.white-section .main-title {
+    color: #87BAC3 !important; /* A kép alapján ez a mélyebb kék árnyalat */
+    text-align: left !important; /* Megszünteti a lyukakat a címben */
+    margin-bottom: 40px;
+    font-size: 3rem; /* Mobilon ezt érdemes csökkenteni */
+    line-height: 1.2;
+}
+
+/* Szövegtörzs beállítása */
+.white-section p {
+    color: #000000; /* Fekete szöveg a jobb olvashatóságért */
+    text-align: justify; 
+    line-height: 1.8;
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Ha van benne kijelölt szöveg (mint a képen a kék hátteres rész) */
+.white-section .highlight {
+    background-color: #3D3369; /* Sötét háttér a kiemelésnek */
+    color: #ffffff; /* Fehér szöveg a kiemelésben */
+    padding: 2px 5px;
+}
+
+/* MOBIL NÉZET */
+@media (max-width: 768px) {
+    .white-section {
+        padding: 60px 0;
+    }
+    .white-section h1 {
+        font-size: 2rem; /* Mobilon kisebb cím, hogy ne törjön szét */
+    }
+}
+
+/* --- SZÁMOZOTT MAGYARÁZÓ LISTA --- */
+.numbered-description-list {
+    list-style: none; /* Kikapcsoljuk az alapértelmezett pöttyöket/számokat */
+    padding: 0;
+    margin: 0;
+}
+
+.numbered-description-list li {
+    margin-bottom: 40px; /* Távolság a pontok között */
+}
+
+.list-item-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px; /* Kicsi távolság a cím és a magyarázat között */
+    text-align: left;
+}
+
+.list-item-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.9); /* Kissé áttetsző fehér a jobb olvashatóságért */
+    margin-left: 30px; /* BELJEBB KEZDŐDIK, mint a cím */
+    text-align: left;
+}
+
+/* --- táblázat --- */
+
+.table-container {
+    width: 100%;
+    margin: 30px 0;
+    overflow-x: auto; /* Mobilbarát nézet érdekében */
+}
+
+.seo-ctr-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #3D3369; /* Lila háttér a kép alapján */
+    color: white;
+    font-family: sans-serif;
+    border: 1px solid white;
+    text-align: left;
+}
+
+.seo-ctr-table th, 
+.seo-ctr-table td {
+    border: 1px solid white;
+    padding: 15px;
+    line-height: 1.4;
+    vertical-align: middle;
+}
+
+/* Fejléc stílusa */
+.seo-ctr-table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Enyhe kiemelés a fejlécnek */
+}
+
+/* Oszlopok szélességének finomhangolása */
+.seo-ctr-table td:nth-child(1) {
+    width: 20%;
+    font-weight: normal;
+}
+
+.seo-ctr-table td:nth-child(2) {
+    width: 25%;
+    text-align: center;
+}
+
+.seo-ctr-table td:nth-child(3) {
+    width: 55%;
+}
+
+/* Alkalmazható az előző CSS mellé vagy helyett */
+.seo-traffic-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #3D3369; /* Sötétlila háttér */
+    color: white;
+    border: 1px solid white;
+}
+
+.seo-traffic-table th {
+    font-weight: bold;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Enyhe kiemelés a fejlécnek */
+}
+
+.seo-traffic-table th,
+.seo-traffic-table td {
+    border: 1px solid white;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+/* Az értékek (százalék és kattintásszám) legyenek balra igazítva a kép szerint */
+.seo-traffic-table td:nth-child(2),
+.seo-traffic-table td:nth-child(3) {
+    text-align: left;
+}
+
+/* --- kód példa --- */
+.code-example {
+    background-color: #e6e6e6; /* Világosszürke háttér a kódnak */
+    border-left: 5px solid #3D3369; /* Lila csík a szélén, ami passzol a designodhoz */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace; /* Írógép stílusú betűtípus */
+    overflow-x: auto; /* Ha hosszú a kód, lehessen görgetni oldalra */
+    text-align: left; /* Fontos, hogy a kód ne legyen középen */
+}
+
+.code-example-purple {
+    background-color: #3D3369; /* Világosszürke háttér a kódnak */
+    border-left: 5px solid #f4f4f4; /* Lila csík a szélén, ami passzol a designodhoz */
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace; /* Írógép stílusú betűtípus */
+    overflow-x: auto; /* Ha hosszú a kód, lehessen görgetni oldalra */
+    text-align: left; /* Fontos, hogy a kód ne legyen középen */
+}
+
+.code-example-purple code {
+    color: #3cdddd; /* Pirosas szín a HTML tageknek, hogy jobban látsszon */
+}
+
+.code-example code {
+    color: #c7254e; /* Pirosas szín a HTML tageknek, hogy jobban látsszon */
+}
+
+/* --- külsö link --- */
+.external-source-link {
+    color: #87BAC3; /* A már használt világoskék színed */
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.external-source-link:hover {
+    color: white; /* Ha ráviszi az egeret, fehéredjen ki */
+    text-decoration: none;
+}
+
+/* --- jó vs rossz példák --- */
+
+.seo-examples-container {
+    margin: 30px 0;
+    font-family: sans-serif;
+    color: #333;
+    line-height: 1.8;
+}
+
+.example-title {
+    margin-bottom: 15px;
+}
+
+.seo-comparison-list {
+    list-style: none;
+    padding: 0;
+}
+
+.seo-comparison-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+/* Térköz a két példacsoport között */
+.spacer {
+    margin-top: 25px !important;
+}
+
+.icon {
+    width: 25px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* A piros X stílusa */
+.bad-example .icon {
+    color: #ff0000; /* Vagy sötétszürke a kép szerint */
+}
+
+/* A pipa stílusa */
+.good-example .icon {
+    color: #04961c;
+    font-size: 0.9rem;
+}
+
+/* A "Jó" soroknál a betűk lehetnek kicsit hangsúlyosabbak */
+.good-example {
+    color: #000;
+}
+
+
+
+/* --- FOOTER --- */
+.site-footer {
+    background-color: #3D3369 !important; /* A kért sötétlila szín */
+    padding: 40px 0 !important;           /* Egyenletes alsó-felső távolság */
+    width: 100% !important;
+    border-top: 1px solid rgba(135, 186, 195, 0.1);
+}
+
+.footer-center-content {
+    width: 100% !important;
+    text-align: center !important;        /* Ez teszi középre a szöveget */
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.copyright-text,
+.copyright-text a {
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    opacity: 0.7;                        /* Kicsit visszafogottabb fehér */
+    margin: 0 !important;
+    letter-spacing: 0.5px;               /* Elegánsabb betűköz */
+    text-decoration: none !important; /* Ez tünteti el az aláhúzást */
+    border-bottom: none !important; /* Biztonság kedvéért, ha a keret húzná alá */
+}
+
+/* Mobil nézeten is ugyanígy marad */
+@media (max-width: 768px) {
+    .site-footer {
+        padding: 30px 20px !important;
+    }
+    .copyright-text {
+        font-size: 0.8rem;
+    }
+}
+
+
+
+/* Nyelvváltó */
+/* --- Nyelvváltó Alapbeállítás (Asztali nézet) --- */
+.lang-switcher {
+    display: inline-flex;
+    align-items: baseline;
+    margin-left: 30px; /* Megfelelő távolság a Blogtól asztali gépen */
+}
+
+.lang-link {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    line-height: 1;
+    display: inline-block;
+}
+
+.lang-link:hover, .lang-link.active {
+    opacity: 1;
+    color: #a29bfe !important;
+}
+
+.lang-separator {
+    color: rgba(255, 255, 255, 0.4);
+    margin: 0 6px;
+    font-size: 0.8rem;
+    align-self: center;
+}
+
+.lang-link.active {
+    border-bottom: 2px solid #a29bfe;
+    padding-bottom: 2px;
+}
+
+/* --- Mobil specifikus igazítás (Hamburger menühöz) --- */
+@media (max-width: 1024px) {
+    .lang-container-mobile {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 15px;
+        padding-top: 15px;
+        display: flex;
+        justify-content: center; /* A konténert középre zárjuk */
+    }
+    
+    .lang-switcher {
+        margin-left: 0; /* Töröljük a 30px-es eltolást, hogy ne legyen féloldalas */
+        width: auto; /* Csak akkora legyen, amekkora a szöveg */
+        justify-content: center;
+    }
+}
