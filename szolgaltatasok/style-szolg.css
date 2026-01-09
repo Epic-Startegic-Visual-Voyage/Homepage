@@ -122,6 +122,11 @@ p, .content-text {
     background: var(--accent-blue);
     width: 0%;
 }
+
+    /* Alapértelmezésben a mobil szöveg rejtve van */
+.mobile-text {
+    display: none;
+    
 /* --- MOBIL NAVBAR (992px alatt) --- */
 @media (max-width: 992px) {
     .menu-toggle {
@@ -156,10 +161,6 @@ p, .content-text {
     .nav-links.active {
         display: flex; /* Ha rákattintasz a hamburgerre, megjelenik */
     }
-
-    /* Alapértelmezésben a mobil szöveg rejtve van */
-.mobile-text {
-    display: none;
 }
 
 /* Mobil nézet (ahol a gomb elcsúszik) */
@@ -838,3 +839,4 @@ p, .content-text {
     }
 
 }
+
