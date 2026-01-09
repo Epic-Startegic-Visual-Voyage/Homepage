@@ -126,7 +126,7 @@ p, .content-text {
     /* Alapértelmezésben a mobil szöveg rejtve van */
 .mobile-text {
     display: none;
-    
+   } 
 /* --- MOBIL NAVBAR (992px alatt) --- */
 @media (max-width: 992px) {
     .menu-toggle {
@@ -192,7 +192,7 @@ p, .content-text {
         white-space: nowrap; /* Megakadályozza a sorokra törést */
     }
 }
-}
+
 /* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
 .hero-full-width {
     background-color: var(--bg-purple);
@@ -852,5 +852,6 @@ p, .content-text {
     }
 
 }
+
 
 
