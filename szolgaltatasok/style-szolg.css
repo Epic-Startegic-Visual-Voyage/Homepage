@@ -123,10 +123,6 @@ p, .content-text {
     width: 0%;
 }
 
-    /* Alapértelmezésben a mobil szöveg rejtve van */
-.mobile-text {
-    display: none;
-   } 
 /* --- MOBIL NAVBAR (992px alatt) --- */
 @media (max-width: 992px) {
     .menu-toggle {
@@ -161,36 +157,7 @@ p, .content-text {
     .nav-links.active {
         display: flex; /* Ha rákattintasz a hamburgerre, megjelenik */
     }
-      .desktop-text {
-        display: none; /* Hosszú szöveg elrejtése */
-    }
     
-    .mobile-text {
-        display: inline; /* Rövid szöveg megjelenítése */
-    }
-
-    .cta-button-nav {
-        padding: 8px 15px !important; /* Kisebb belső margó, hogy elférjen a logó mellett */
-        font-size: 0.9rem !important;
-        white-space: nowrap; /* Megakadályozza a sorokra törést */
-    }
-}
-
-/* Mobil nézet (ahol a gomb elcsúszik) */
-@media (max-width: 1024px) {
-    .desktop-text {
-        display: none; /* Hosszú szöveg elrejtése */
-    }
-    
-    .mobile-text {
-        display: inline; /* Rövid szöveg megjelenítése */
-    }
-
-    .cta-button-nav {
-        padding: 8px 15px !important; /* Kisebb belső margó, hogy elférjen a logó mellett */
-        font-size: 0.9rem !important;
-        white-space: nowrap; /* Megakadályozza a sorokra törést */
-    }
 }
 
 /* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
@@ -852,6 +819,7 @@ p, .content-text {
     }
 
 }
+
 
 
 
