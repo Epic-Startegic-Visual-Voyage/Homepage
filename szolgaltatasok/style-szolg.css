@@ -156,6 +156,28 @@ p, .content-text {
     .nav-links.active {
         display: flex; /* Ha rákattintasz a hamburgerre, megjelenik */
     }
+
+    /* Alapértelmezésben a mobil szöveg rejtve van */
+.mobile-text {
+    display: none;
+}
+
+/* Mobil nézet (ahol a gomb elcsúszik) */
+@media (max-width: 1024px) {
+    .desktop-text {
+        display: none; /* Hosszú szöveg elrejtése */
+    }
+    
+    .mobile-text {
+        display: inline; /* Rövid szöveg megjelenítése */
+    }
+
+    .cta-button-nav {
+        padding: 8px 15px !important; /* Kisebb belső margó, hogy elférjen a logó mellett */
+        font-size: 0.9rem !important;
+        white-space: nowrap; /* Megakadályozza a sorokra törést */
+    }
+}
 }
 /* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
 .hero-full-width {
@@ -814,4 +836,5 @@ p, .content-text {
         width: auto; /* Csak akkora legyen, amekkora a szöveg */
         justify-content: center;
     }
+
 }
