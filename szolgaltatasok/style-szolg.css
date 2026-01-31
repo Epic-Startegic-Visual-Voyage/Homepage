@@ -52,6 +52,13 @@ p, .content-text {
     text-align: left !important; /* Sorkizárás helyett balra igazítás */
     line-height: 1.6;           /* Kellemesebb sorköz az olvashatósághoz */
 }
+
+.logo-link {
+    font-weight: 800 !important; /* Extra vastag */
+    text-decoration: none;       /* Aláhúzás levétele */
+    color: inherit;              /* Szín megtartása */
+    display: inline-block;
+}
 /* --- NAVBAR ÉS PROGRESS BAR --- */
 .main-navbar {
     background-color: var(--bg-purple);
@@ -852,6 +859,7 @@ html {
     }
 
 }
+
 
 
 
