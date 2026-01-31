@@ -113,6 +113,8 @@ body {
     width: 100%;            /* Mobilon a képernyő 90%-át foglalja el */
     max-width: 350px;      /* De ne legyen szélesebb 350 pixelnél asztali gépen sem */
     display: inline-block;
+    margin-left: 0 !important;  /* Biztosítjuk, hogy ne legyen bal oldali eltolás */
+    margin-right: 0 !important;
     box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje a szélességet */
 }
 
@@ -120,6 +122,8 @@ body {
     width: 100%;            /* Mobilon a képernyő 90%-át foglalja el */
     max-width: 350px;      /* De ne legyen szélesebb 350 pixelnél asztali gépen sem */
     display: inline-block;
+    margin-left: 0 !important;  /* Biztosítjuk, hogy ne legyen bal oldali eltolás */
+    margin-right: 0 !important;
     box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje a szélességet */
 }
 }
@@ -1251,6 +1255,7 @@ body {
     }
 
 }
+
 
 
 
