@@ -157,9 +157,9 @@ body {
 }
 
 /* -------------------------------------------------------------------------- */
-/* MOBIL NÉZET: Átváltás hamburger menüre (pl. 768px alatt) */
+/* MOBIL NÉZET: Átváltás hamburger menüre (pl. 1024px alatt) */
 /* -------------------------------------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     /* Megmutatjuk a hamburger ikont */
     .hamburger-menu {
         display: block;
@@ -1236,3 +1236,4 @@ body {
     }
 
 }
+
