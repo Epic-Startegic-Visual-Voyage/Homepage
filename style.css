@@ -110,14 +110,14 @@ body {
 
 @media (max-width: 480px) {
 .main-cta-btn { 
-    width: 90%;            /* Mobilon a képernyő 90%-át foglalja el */
+    width: 100%;            /* Mobilon a képernyő 90%-át foglalja el */
     max-width: 350px;      /* De ne legyen szélesebb 350 pixelnél asztali gépen sem */
     display: inline-block;
     box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje a szélességet */
 }
 
 .secondary-cta-btn { 
-    width: 90%;            /* Mobilon a képernyő 90%-át foglalja el */
+    width: 100%;            /* Mobilon a képernyő 90%-át foglalja el */
     max-width: 350px;      /* De ne legyen szélesebb 350 pixelnél asztali gépen sem */
     display: inline-block;
     box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje a szélességet */
@@ -1251,6 +1251,7 @@ body {
     }
 
 }
+
 
 
 
