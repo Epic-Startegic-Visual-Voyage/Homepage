@@ -55,6 +55,7 @@ p, .content-text {
 
 .logo-link {
     font-weight: 800 !important; /* Extra vastag */
+    font-weight: bold;
     text-decoration: none;       /* Aláhúzás levétele */
     color: inherit;              /* Szín megtartása */
     display: inline-block;
@@ -859,6 +860,7 @@ html {
     }
 
 }
+
 
 
 
