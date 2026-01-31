@@ -159,7 +159,12 @@ p, .content-text {
     }
     
 }
-
+/* Mobil cím méret, mint 600px */
+@media (max-width: 600px) {
+    h1 {
+        font-size: 28px; /* Kisebb betűméret, hogy beférjen */
+    }
+}
 /* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
 .hero-full-width {
     background-color: var(--bg-purple);
@@ -819,6 +824,7 @@ p, .content-text {
     }
 
 }
+
 
 
 
