@@ -159,13 +159,31 @@ p, .content-text {
     }
     
 }
-/* Mobil cím méret */
-@media (max-width: 992px) {
-    h1 {
-        font-size: 28px; /* Kisebb betűméret, hogy beférjen */
-        hyphens: auto;
+
+.seo {
+    /* 1. Kényszerített sortörés */
+    word-break: break-word;      /* Megtöri a szót, ha nem fér el */
+    overflow-wrap: break-word;
+    white-space: normal;         /* Biztosítja, hogy ne maradjon egy sorban */
+    
+    /* 2. Automatikus elválasztás (kötőjellel) */
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
+    
+    /* 3. Mobil méretezés */
+    display: block;
+    width: 100%;
+}
+
+@media (max-width: 480px) {
+    .seo {
+        font-size: 1.8rem !important; /* Ha még mindig túl nagy, vedd lejjebb */
+        line-height: 1.2;
+        text-align: left; /* Középre zárt szövegnél az elválasztás néha furcsa */
     }
 }
+
 /* --- HERO SZEKCIÓ (TELJES SZÉLESSÉG) --- */
 .hero-full-width {
     background-color: var(--bg-purple);
@@ -825,6 +843,7 @@ p, .content-text {
     }
 
 }
+
 
 
 
