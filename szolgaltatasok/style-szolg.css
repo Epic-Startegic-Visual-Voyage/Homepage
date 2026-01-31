@@ -178,7 +178,7 @@ p, .content-text {
 
 @media (max-width: 480px) {
     .seo {
-        font-size: 1.8rem !important; /* Ha még mindig túl nagy, vedd lejjebb */
+       /* font-size: 1.8rem !important; /* Ha még mindig túl nagy, vedd lejjebb */
         line-height: 1.2;
         text-align: left; /* Középre zárt szövegnél az elválasztás néha furcsa */
     }
@@ -843,6 +843,7 @@ p, .content-text {
     }
 
 }
+
 
 
 
