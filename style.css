@@ -102,6 +102,24 @@ body {
 html {
     scroll-behavior: smooth;
 }
+
+@media (max-width: 480px) {
+    /* Csak a fejlécben lévő gombot méretezzük át */
+    .nav-btn {
+        font-size: 11px !important;    /* Kisebb betű, hogy ne legyen batár nagy */
+        padding: 6px 10px !important;  /* Kisebb belső helykitöltés */
+        max-width: fit-content;        /* Csak akkora legyen, amekkora a szöveg */
+        white-space: nowrap;           /* Ne törje ketté a gomb feliratát */
+    }
+
+    /* A logó pedig így már ki tudja magát feszíteni 2 sorba */
+    .logo span {
+        font-size: 13px !important;
+        display: inline-block;
+        min-width: 130px; 
+    }
+}
+
 /* CTA gomb stílusa (Árajánlatkérés) */
 .cta-button {
     background-color: #ff5722; /* Narancssárga, mint a képen */
@@ -1264,6 +1282,7 @@ html {
     }
 
 }
+
 
 
 
