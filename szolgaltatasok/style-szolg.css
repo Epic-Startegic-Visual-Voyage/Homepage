@@ -123,6 +123,15 @@ p, .content-text {
     width: 0%;
 }
 
+.logo-link {
+    text-decoration: none; /* Eltünteti az aláhúzást */
+    color: inherit;        /* Átveszi a szülő elem (fekete/fehér) színét */
+    cursor: pointer;       /* Mutatja az egeret, hogy kattintható */
+    display: inline-block;
+}
+html {
+    scroll-behavior: smooth;
+}
 /* --- MOBIL NAVBAR (992px alatt) --- */
 @media (max-width: 992px) {
     .menu-toggle {
@@ -843,6 +852,7 @@ p, .content-text {
     }
 
 }
+
 
 
 
