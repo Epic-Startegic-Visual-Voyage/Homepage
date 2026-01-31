@@ -108,6 +108,7 @@ body {
     background-color: #e64a19;
 }
 
+@media (max-width: 480px) {
 .main-cta-btn { 
     width: 90%;            /* Mobilon a képernyő 90%-át foglalja el */
     max-width: 350px;      /* De ne legyen szélesebb 350 pixelnél asztali gépen sem */
@@ -121,7 +122,7 @@ body {
     display: inline-block;
     box-sizing: border-box; /* Ez biztosítja, hogy a padding ne növelje a szélességet */
 }
-
+}
 /* Hamburger menü ikon - Alapból rejtve (asztali nézet) */
 .hamburger-menu {
     display: none;
@@ -1250,5 +1251,6 @@ body {
     }
 
 }
+
 
 
