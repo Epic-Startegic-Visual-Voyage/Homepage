@@ -93,6 +93,15 @@ body {
     color: #ff5722; /* Narancssárga kiemelés */
 }
 
+.logo-link {
+    text-decoration: none; /* Eltünteti az aláhúzást */
+    color: inherit;        /* Átveszi a szülő elem (fekete/fehér) színét */
+    cursor: pointer;       /* Mutatja az egeret, hogy kattintható */
+    display: inline-block;
+}
+html {
+    scroll-behavior: smooth;
+}
 /* CTA gomb stílusa (Árajánlatkérés) */
 .cta-button {
     background-color: #ff5722; /* Narancssárga, mint a képen */
@@ -1255,6 +1264,7 @@ body {
     }
 
 }
+
 
 
 
